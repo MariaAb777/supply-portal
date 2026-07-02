@@ -1,0 +1,298 @@
+:root {
+  --q-background: #f4f7fb;
+  --q-primary: #f4f7fb;
+  --q-chrome-surface: #ffffffd9;
+  --q-secondary: #ffffff;
+  --q-border: #dbe4ef;
+  --q-accent: #2d6fff;
+  --q-maintext: #64748b;
+  --q-lighttext: #0f172a;
+  --q-darktext: #94a3b8;
+  --q-menu: #eef4fb;
+  --app-chrome-bg: #ffffffd9;
+  --app-control-bg: rgba(15, 23, 42, 0.04);
+  --app-soft-bg: rgba(15, 23, 42, 0.025);
+  --app-track-bg: rgba(15, 23, 42, 0.09);
+  --app-chart-grid: rgba(15, 23, 42, 0.08);
+  --app-overlay-bg: rgba(244, 247, 251, 0.78);
+  --app-donut-hole-bg: #ffffff;
+  --app-card-shadow: 0 16px 45px rgba(15, 23, 42, 0.06);
+  --q-accent-transparent: #2d6fff3b;
+  --q-positive-transparent: #21ba453b;
+  --q-info-transparent: #3b82f63b;
+  --q-negative-transparent: #c100153b;
+  --q-warning-transparent: #f2c0373b;
+}
+
+body.body--dark {
+  --q-background: #0a0f1e;
+  --q-primary: #0a0f1e;
+  --q-chrome-surface: #111827b2;
+  --q-secondary: #111827;
+  --q-border: #e2e8f01f;
+  --q-maintext: #9ca3af;
+  --q-lighttext: #fff;
+  --q-darktext: #718096;
+  --q-menu: #2d3548;
+  --app-chrome-bg: var(--q-secondary);
+  --app-control-bg: rgba(255, 255, 255, 0.04);
+  --app-soft-bg: rgba(255, 255, 255, 0.015);
+  --app-track-bg: rgba(255, 255, 255, 0.08);
+  --app-chart-grid: rgba(255, 255, 255, 0.06);
+  --app-overlay-bg: rgba(10, 15, 30, 0.72);
+  --app-donut-hole-bg: #111827;
+  --app-card-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--q-background) !important;
+  color: var(--q-lighttext);
+  scrollbar-color: color-mix(in srgb, var(--q-accent) 45%, var(--q-menu)) transparent;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: color-mix(in srgb, var(--q-accent) 45%, var(--q-menu)) transparent;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--q-accent) 45%, var(--q-menu));
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--q-accent) 65%, var(--q-menu));
+  background-clip: padding-box;
+}
+
+h1,
+h2,
+h3,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--q-lighttext);
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-maintext {
+  color: var(--q-maintext) !important;
+}
+
+.text-lighttext {
+  color: var(--q-lighttext) !important;
+}
+
+.text-darktext {
+  color: var(--q-darktext) !important;
+}
+
+.text-accent {
+  color: var(--q-accent) !important;
+}
+
+.bg-accent-transparent {
+  background: var(--q-accent-transparent) !important;
+}
+
+.q-card.app-card {
+  background: var(--q-secondary);
+  color: var(--q-lighttext);
+  border-radius: 10px;
+  border: 1px solid var(--q-border);
+  box-shadow: var(--app-card-shadow);
+}
+
+.q-menu.header-dropdown-menu {
+  background-color: var(--q-secondary) !important;
+  border: 1px solid var(--q-border);
+  border-radius: 10px;
+}
+
+.q-menu.header-dropdown-menu .q-item {
+  color: var(--q-lighttext);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.q-menu.header-dropdown-menu .q-item:hover {
+  background: var(--q-menu);
+}
+
+.q-menu.header-dropdown-menu .q-separator {
+  background: var(--q-border);
+}
+
+.q-menu.app-select-menu {
+  border: 1px solid var(--q-border);
+  border-radius: 10px;
+  background: var(--q-secondary) !important;
+  box-shadow: var(--app-card-shadow);
+  color: var(--q-lighttext);
+}
+
+.q-menu.app-select-menu .q-item {
+  color: var(--q-lighttext);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.q-menu.app-select-menu .q-item:hover,
+.q-menu.app-select-menu .q-item--active,
+.q-menu.app-select-menu .q-item[aria-selected="true"] {
+  background: var(--q-accent-transparent);
+  color: var(--q-accent);
+}
+
+.q-field--outlined .q-field__control::before,
+.q-field--outlined .q-field__control::after,
+.q-field--outlined.q-field--focused .q-field__control::before,
+.q-field--outlined.q-field--focused .q-field__control::after {
+  border-color: var(--q-border) !important;
+}
+
+.q-field--outlined.q-field--focused .q-field__control {
+  box-shadow: none !important;
+}
+
+.q-field__native,
+.q-field__input,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__label {
+  color: var(--q-lighttext) !important;
+}
+
+.q-field__native::placeholder {
+  color: var(--q-maintext);
+}
+
+.q-field--outlined .q-field__control {
+  background: transparent;
+}
+
+.q-notification {
+  position: relative;
+  min-width: 320px;
+  border: 1px solid var(--q-border);
+  border-radius: 8px;
+  background: var(--q-secondary) !important;
+  color: var(--q-lighttext) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+.q-notification__wrapper {
+  padding: 14px 18px 14px 20px;
+}
+
+.q-notification::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 24px;
+  border-radius: 0 2px 2px 0;
+  background: var(--q-accent);
+  transform: translateY(-50%);
+}
+
+.q-notification--positive {
+  border-color: color-mix(in srgb, #6ee7a0 35%, transparent);
+}
+
+.q-notification__message {
+  color: var(--q-lighttext);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.q-notification__icon {
+  display: none !important;
+}
+
+.standart-table {
+  width: 100%;
+  min-width: 0;
+  background-color: transparent !important;
+}
+
+.standart-table .q-table__container,
+.standart-table .q-table__middle {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.standart-table .q-table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.standart-table .q-table thead,
+.standart-table .q-table thead tr {
+  background-color: var(--q-secondary) !important;
+}
+
+.standart-table .q-table thead th {
+  background-color: var(--q-secondary) !important;
+  color: var(--q-maintext) !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.standart-table .q-table tbody td {
+  border-bottom: 1px solid var(--q-border) !important;
+  background-color: transparent !important;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.standart-table .q-table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.standart-table .q-table__top {
+  display: none;
+}
+
+.standart-table .q-table__bottom {
+  border-top: 1px solid var(--q-border);
+  color: var(--q-maintext);
+}
+
+.unread-row > td {
+  background: rgba(45, 111, 255, 0.06) !important;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
