@@ -162,6 +162,7 @@ function closeSearch() {
   display: flex;
   align-items: center;
   gap: 14px;
+  min-width: 0;
 }
 
 .app-header__right {
@@ -184,7 +185,7 @@ function closeSearch() {
   top: calc(100% + 12px);
   left: 0;
   z-index: 80;
-  width: min(720px, calc(100vw - 360px));
+  width: min(720px, calc(100vw - 340px));
   min-width: 520px;
   overflow: hidden;
   border: 1px solid var(--q-border);
@@ -322,6 +323,17 @@ function closeSearch() {
 @media (max-width: 1200px) {
   .header-search {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-header {
+    gap: 10px;
+    padding: 0 14px;
+  }
+
+  .user-btn {
+    padding: 4px 6px;
   }
 }
 

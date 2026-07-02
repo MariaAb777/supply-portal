@@ -46,6 +46,7 @@ const emit = defineEmits<{
   border-radius: 14px;
   background: var(--q-secondary);
   color: var(--q-lighttext);
+  overflow: visible;
 }
 
 .app-modal__header {
@@ -64,6 +65,7 @@ const emit = defineEmits<{
 
 .app-modal__body {
   padding: 18px;
+  overflow: visible;
 }
 
 .app-modal__actions {

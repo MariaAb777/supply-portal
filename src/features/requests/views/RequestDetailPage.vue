@@ -143,4 +143,23 @@ const activeTab = ref("kp");
   font-weight: 700;
   padding: 5px 11px;
 }
+
+@media (max-width: 700px) {
+  .detail-tabs {
+    :deep(.q-tabs__content) {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    :deep(.q-tab) {
+      flex: 0 0 auto;
+      min-width: max-content;
+      padding: 0 12px;
+    }
+  }
+
+  .detail-tab-panels :deep(.q-tab-panel) {
+    padding: 16px;
+  }
+}
 </style>

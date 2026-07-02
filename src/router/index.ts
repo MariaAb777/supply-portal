@@ -24,6 +24,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/features/notifications/views/NotificationsPage.vue")
       },
       {
+        path: "profile",
+        name: "profile",
+        component: () => import("@/features/profile/views/ProfilePage.vue")
+      },
+      {
         path: "/:pathMatch(.*)*",
         name: "not-found",
         component: () => import("@/features/not-found/views/NotFoundPage.vue")

@@ -11,7 +11,7 @@
       </q-btn>
     </div>
 
-    <div class="chat-page row q-col-gutter-md">
+    <div class="chat-page row q-col-gutter-md" :class="{ 'chat-page--thread-open': isMobileThreadOpen }">
       <q-card flat class="app-card chat-page__list col-12 col-md-4">
       <div class="q-pa-md">
         <template v-if="!showMessageSearch">
@@ -59,7 +59,7 @@
           :active="thread.id === activeId"
           class="chat-page__thread-item"
           active-class="chat-page__thread-item--active"
-          @click="activeId = thread.id"
+          @click="openThread(thread.id)"
         >
           <q-item-section avatar>
             <q-avatar color="accent" text-color="white" size="36px">О</q-avatar>
@@ -77,6 +77,13 @@
 
       <q-card flat class="app-card chat-page__main col column">
       <div class="row items-center q-pa-md chat-page__head">
+        <q-btn
+          flat
+          dense
+          icon="arrow_back"
+          class="chat-page__back-btn q-mr-sm"
+          @click="closeMobileThread"
+        />
         <q-avatar color="accent" text-color="white" size="40px" class="q-mr-md">О</q-avatar>
         <div class="col">
           <div class="text-subtitle1 text-weight-bold text-lighttext">Заявка ДГ-2024-055</div>
@@ -156,6 +163,7 @@ const search = ref("");
 const msgSearch = ref("");
 const draft = ref("");
 const activeId = ref("1");
+const isMobileThreadOpen = ref(false);
 const showMessageSearch = ref(false);
 const isManagerModalOpen = ref(false);
 const isComplaintModalOpen = ref(false);
@@ -170,6 +178,16 @@ const searchedMessages = computed(() => {
 
   return chatMessages.filter((message) => message.text.toLowerCase().includes(query));
 });
+
+function openThread(threadId: string) {
+  activeId.value = threadId;
+  isMobileThreadOpen.value = true;
+}
+
+function closeMobileThread() {
+  isMobileThreadOpen.value = false;
+  showMessageSearch.value = false;
+}
 
 function closeComplaintModal() {
   isComplaintModalOpen.value = false;
@@ -305,6 +323,16 @@ function submitComplaint() {
     background: var(--q-accent-transparent);
     color: var(--q-accent);
   }
+}
+
+.chat-page__back-btn {
+  display: none;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  border: 1px solid var(--q-border);
+  border-radius: 10px;
+  color: var(--q-lighttext);
 }
 
 .chat-page__input {
@@ -445,8 +473,62 @@ function submitComplaint() {
 }
 
 @media (max-width: 1024px) {
+  .chat-page__list,
+  .chat-page__main {
+    border-radius: 10px !important;
+  }
+
   .chat-page__list {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .chat-page__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .chat-page__action-btn {
+    width: 100%;
+  }
+
+  .chat-page__head {
+    align-items: flex-start;
+  }
+
+  .chat-page__list {
+    display: block;
+  }
+
+  .chat-page__main {
     display: none;
+  }
+
+  .chat-page--thread-open {
+    .chat-page__list {
+      display: none;
+    }
+
+    .chat-page__main {
+      display: flex;
+    }
+  }
+
+  .chat-page__back-btn {
+    display: inline-flex;
+  }
+
+  .chat-page__main {
+    min-height: 560px;
+  }
+
+  .chat-msg {
+    max-width: 92%;
+  }
+
+  .composer {
+    gap: 8px;
   }
 }
 </style>

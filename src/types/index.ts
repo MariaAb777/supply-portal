@@ -40,20 +40,6 @@ export interface KpRow {
   unread?: boolean;
 }
 
-export interface RequestRow {
-  id: string;
-  company: string;
-  status: string;
-  statusTone: StatusTone;
-  statusNote: string;
-  billed: string;
-  paid: string;
-  paidPct: number;
-  updated: string;
-  unread?: boolean;
-  isNew?: boolean;
-}
-
 export interface OrderRow {
   id: string;
   invoice: string;
@@ -107,6 +93,21 @@ export interface KpCardItem {
   brand: string;
   article: string;
   qty: string;
+}
+
+export interface UserProfile {
+  fullName: string;
+  initials: string;
+  role: string;
+  email: string;
+  phone: string;
+  bio: string;
+  joinedAt: string;
+  location: string;
+  jobTitle: string;
+  company: string;
+  inn: string;
+  language: string;
 }
 
 export interface RequestDetail {

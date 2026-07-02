@@ -6,8 +6,8 @@ import type {
   KpRow,
   OrderRow,
   RequestDetail,
-  RequestRow,
-  StageChip
+  StageChip,
+  UserProfile
 } from "@/types";
 
 export const navCounts = {
@@ -230,44 +230,6 @@ export const kpRows: KpRow[] = [
   }
 ];
 
-export const requestRows: RequestRow[] = [
-  {
-    id: "ДГ-2025-012",
-    company: "ООО Снаб",
-    status: "в пути",
-    statusTone: "blue",
-    statusNote: "часть в пути",
-    billed: "432 000 ₽",
-    paid: "432 000 ₽",
-    paidPct: 100,
-    updated: "305 дн назад",
-    unread: true,
-    isNew: true
-  },
-  {
-    id: "ДГ-2025-011",
-    company: "ООО Снаб",
-    status: "заказан",
-    statusTone: "blue",
-    statusNote: "заказали у поставщика",
-    billed: "540 000 ₽",
-    paid: "270 000 ₽",
-    paidPct: 50,
-    updated: "325 дн назад"
-  },
-  {
-    id: "ДГ-2025-010",
-    company: "ООО Снаб",
-    status: "подготовка КП",
-    statusTone: "blue",
-    statusNote: "готовим КП",
-    billed: "0 ₽",
-    paid: "0 ₽",
-    paidPct: 0,
-    updated: "345 дн назад"
-  }
-];
-
 export const orderRows: OrderRow[] = [
   {
     id: "ДГ-2025-021",
@@ -329,6 +291,94 @@ export const docRows: DocRow[] = [
     sum: "480 000 ₽",
     type: "УПД",
     typeTone: "green"
+  }
+];
+
+export const userProfile: UserProfile = {
+  fullName: "Малых Кирилл Александрович",
+  initials: "МК",
+  role: "Клиент",
+  email: "kirill.malykh@koltsovo.aero",
+  phone: "+7 (343) 264-45-12",
+  bio: "Отвечает за закупки и снабжение аэропорта, контролирует заявки, КП и поставки оборудования.",
+  joinedAt: "12 апреля 2023",
+  location: "Екатеринбург, аэропорт Кольцово",
+  jobTitle: "Руководитель снабжения",
+  company: "АО «АЭРОПОРТ КОЛЬЦОВО»",
+  inn: "7701234567",
+  language: "Русский"
+};
+
+export const profileStats = [
+  { label: "Заявок", value: "42", icon: "assignment", color: "#b89cff" },
+  { label: "Заказов", value: "14", icon: "inventory_2", color: "#6ee7a0" },
+  { label: "КП", value: "16", icon: "description", color: "#e8c96a" },
+  { label: "Документов", value: "27", icon: "folder_copy", color: "#7eb0ff" }
+];
+
+export const profileActivity = [
+  {
+    id: "1",
+    text: "Вы обновили заявку",
+    link: "ДГ-2025-015",
+    to: { name: "request-detail", params: { id: "ДГ-2025-015" } },
+    time: "2 часа назад",
+    icon: "edit",
+    color: "#f87171"
+  },
+  {
+    id: "2",
+    text: "Отправлено КП по заявке",
+    link: "КП-2025-015",
+    to: { name: "kp-card", params: { id: "КП-2025-015" } },
+    time: "Вчера",
+    icon: "description",
+    color: "#7eb0ff"
+  },
+  {
+    id: "3",
+    text: "Новое сообщение по заявке",
+    link: "ДГ-2024-055",
+    to: { name: "chat" },
+    time: "2 дня назад",
+    icon: "chat",
+    color: "#b89cff"
+  },
+  {
+    id: "4",
+    text: "Загружен документ",
+    link: "УПД №1005",
+    to: { name: "docs" },
+    time: "3 дня назад",
+    icon: "upload_file",
+    color: "#6ee7a0"
+  }
+];
+
+export const profilePreferences = [
+  {
+    title: "Уведомления",
+    note: "Настройка оповещений по заявкам и заказам",
+    icon: "notifications",
+    color: "#e8c96a"
+  },
+  {
+    title: "Безопасность",
+    note: "Пароль и вход в систему",
+    icon: "lock",
+    color: "#7eb0ff"
+  },
+  {
+    title: "Тёмная тема",
+    note: "Внешний вид интерфейса",
+    icon: "dark_mode",
+    color: "#b89cff"
+  },
+  {
+    title: "Конфиденциальность",
+    note: "Доступ к данным и соглашения",
+    icon: "shield",
+    color: "#6ee7a0"
   }
 ];
 

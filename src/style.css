@@ -127,26 +127,6 @@ a {
   box-shadow: var(--app-card-shadow);
 }
 
-.q-menu.header-dropdown-menu {
-  background-color: var(--q-secondary) !important;
-  border: 1px solid var(--q-border);
-  border-radius: 10px;
-}
-
-.q-menu.header-dropdown-menu .q-item {
-  color: var(--q-lighttext);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.q-menu.header-dropdown-menu .q-item:hover {
-  background: var(--q-menu);
-}
-
-.q-menu.header-dropdown-menu .q-separator {
-  background: var(--q-border);
-}
-
 .q-menu.app-select-menu {
   border: 1px solid var(--q-border);
   border-radius: 10px;
@@ -295,4 +275,29 @@ a {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+  .standart-table .q-table__middle {
+    overflow-x: auto;
+  }
+
+  .standart-table .q-table {
+    min-width: 760px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .q-card.app-card {
+    border-radius: 9px;
+  }
+
+  .standart-table .q-table {
+    min-width: 680px;
+  }
 }

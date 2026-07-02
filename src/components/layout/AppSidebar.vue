@@ -1,12 +1,12 @@
 <template>
   <q-drawer
     :model-value="true"
-    :mini="isCollapsed"
+    :mini="isMini"
     :width="280"
     :mini-width="78"
     behavior="desktop"
     class="app-sidebar"
-    :class="{ 'app-sidebar--collapsed': isCollapsed }"
+    :class="{ 'app-sidebar--collapsed': isMini }"
     no-swipe-close
     no-swipe-open
   >
@@ -16,12 +16,12 @@
           <div class="app-sidebar__logo row flex-center">
             <q-icon name="mdi-package-variant-closed" color="white" size="22px" />
           </div>
-          <span v-if="!isCollapsed" class="app-sidebar__brand-name">Система Снабжения</span>
+          <span v-if="!isMini" class="app-sidebar__brand-name">Система Снабжения</span>
         </router-link>
       </q-toolbar>
 
       <q-list class="app-sidebar__list">
-        <div v-if="!isCollapsed" class="app-sidebar__group-label">Кабинет</div>
+        <div v-if="!isMini" class="app-sidebar__group-label">Кабинет</div>
 
         <q-item
           v-for="item in menuItems"
@@ -38,10 +38,10 @@
           <q-item-section>
             <q-item-label>{{ item.label }}</q-item-label>
           </q-item-section>
-          <q-item-section v-if="!isCollapsed && (item.total !== undefined || item.unread !== undefined)" side>
+          <q-item-section v-if="!isMini && (item.total !== undefined || item.unread !== undefined)" side>
             <NavCountBadge :total="item.total" :unread="item.unread" />
           </q-item-section>
-          <q-tooltip v-if="isCollapsed" anchor="center right" self="center left" class="app-sidebar__tooltip">
+          <q-tooltip v-if="isMini" anchor="center right" self="center left" class="app-sidebar__tooltip">
             {{ item.label }}
           </q-tooltip>
         </q-item>
@@ -52,9 +52,9 @@
 
         <div class="app-sidebar__bottom-action app-sidebar__bottom-action--theme">
           <q-icon name="dark_mode" size="18px" />
-          <span v-if="!isCollapsed">Тёмная тема</span>
+          <span v-if="!isMini">Тёмная тема</span>
           <q-toggle
-            v-if="!isCollapsed"
+            v-if="!isMini"
             v-model="isDarkTheme"
             dense
             color="accent"
@@ -67,14 +67,14 @@
 
         <button class="app-sidebar__bottom-action app-sidebar__bottom-action--button" type="button">
           <q-icon name="logout" size="18px" />
-          <span v-if="!isCollapsed">Выход</span>
-          <q-tooltip v-if="isCollapsed" anchor="center right" self="center left" class="app-sidebar__tooltip">
+          <span v-if="!isMini">Выход</span>
+          <q-tooltip v-if="isMini" anchor="center right" self="center left" class="app-sidebar__tooltip">
             Выход
           </q-tooltip>
         </button>
       </div>
 
-      <div class="app-sidebar__collapse">
+      <div v-if="!$q.screen.lt.md" class="app-sidebar__collapse">
         <q-separator class="app-sidebar__separator" />
         <button class="app-sidebar__collapse-button" type="button" @click="isCollapsed = !isCollapsed">
           <q-icon :name="isCollapsed ? 'mdi-chevron-right' : 'mdi-chevron-left'" size="22px" />
@@ -103,6 +103,7 @@ type MenuItem = {
 const route = useRoute();
 const $q = useQuasar();
 const isCollapsed = ref(false);
+const isMini = computed(() => isCollapsed.value || $q.screen.lt.md);
 const isDarkTheme = computed({
   get: () => $q.dark.isActive,
   set: setDarkTheme

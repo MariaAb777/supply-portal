@@ -124,4 +124,16 @@ onBeforeUnmount(() => {
 .page-loading-fade-leave-to {
   opacity: 0;
 }
+
+@media (max-width: 900px) {
+  .main-page {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-page {
+    padding: 12px !important;
+  }
+}
 </style>
